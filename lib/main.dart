@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'pages/splash_screen.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const LuxeylineApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class LuxeylineApp extends StatelessWidget {
+  const LuxeylineApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Luxeyline',
+          home: child,
+        );
+      },
+      child: const SplashScreen(),
     );
   }
 }
